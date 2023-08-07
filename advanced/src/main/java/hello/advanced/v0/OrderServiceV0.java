@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class OrderService {
+public class OrderServiceV0 {
 
 	private final OrderRepositoryV0 orderRepository;
 
