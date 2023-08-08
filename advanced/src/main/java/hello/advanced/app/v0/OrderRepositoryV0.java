@@ -1,4 +1,4 @@
-package hello.advanced.v0;
+package hello.advanced.app.v0;
 
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +18,7 @@ public class OrderRepositoryV0 {
 
 	private static void sleep(int millis) {
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(millis);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
