@@ -1,5 +1,5 @@
 package hello.proxy.jdkdynamic.code;
 
-public interface AInterface {
+public interface BInterface {
 	String call();
 }
