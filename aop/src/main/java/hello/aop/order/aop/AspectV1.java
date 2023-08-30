@@ -13,6 +13,10 @@ public class AspectV1 {
 	@Around("execution(* hello.aop.order..*(..))")
 	public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable{
 		log.info("[log] {}",joinPoint.getSignature()); //joinPoint Signature
-		return joinPoint.proceed();
+		Long startTime = System.currentTimeMillis();
+		Object proceed = joinPoint.proceed();
+		Long lastTime = System.currentTimeMillis();
+		log.info("time = {}", lastTime - startTime);
+		return proceed;
 	}
 }
