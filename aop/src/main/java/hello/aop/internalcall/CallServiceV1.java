@@ -1,16 +1,24 @@
 package hello.aop.internalcall;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class CallServiceV0 {
+public class CallServiceV1 {
+
+	private CallServiceV1 callServiceV1;
+
+	@Autowired
+	public void setCallServiceV1(CallServiceV1 callServiceV1) {
+		this.callServiceV1 = callServiceV1;
+	}
 
 	public void external() {
 		log.info("call external");
-		internal(); // 내부 메서드 호출
+		callServiceV1.internal(); // 내부 메서드 호출
 	}
 
 	public void internal() {

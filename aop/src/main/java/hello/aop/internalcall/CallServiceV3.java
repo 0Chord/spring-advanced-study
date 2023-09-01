@@ -1,29 +1,24 @@
 package hello.aop.internalcall;
 
 import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 구조를 변경, 분리
+ */
 @Slf4j
 @Component
-public class CallServiceV2 {
+@RequiredArgsConstructor
+public class CallServiceV3 {
 
-	// private final ApplicationContext applicationContext;
-	private final ObjectProvider<CallServiceV2> callServiceProvider;
+	private final InternalService internalService;
 
-	public CallServiceV2(ObjectProvider<CallServiceV2> callServiceProvider) {
-		this.callServiceProvider = callServiceProvider;
-	}
 	public void external() {
 		log.info("call external");
-		CallServiceV2 callServiceV2 = callServiceProvider.getObject();
-		callServiceV2.internal(); // 내부 메서드 호출
+		internalService.internal(); // 내부 메서드 호출
 	}
 
-	public void internal() {
-		log.info("call internal");
-	}
 }
